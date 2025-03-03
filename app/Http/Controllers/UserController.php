@@ -23,19 +23,17 @@ class UserController extends Controller
         // dd($credentials);
         if (Auth::guard('web')->attempt($credentials)) {
             // dd('hi');
-            // $notification1 = array(
-            //     'message' => 'User Login Successful',
-            //     'alert-type' => 'success'
-            // );
-            // return redirect()->route('user-dashboard')->with($notification1);
-            return redirect()->route('user-dashboard');
+            $notification1 = array(
+                'message' => 'User Login Successful',
+                'alert-type' => 'success'
+            );
+            return redirect()->route('user-dashboard')->with($notification1);
         } else {
-            // $notification2 = array(
-            //     'message' => 'Invalid Credentials',
-            //     'alert-type' => 'error'
-            // );
-            // return back()->with($notification2);
-            return back();
+            $notification2 = array(
+                'message' => 'Invalid Credentials',
+                'alert-type' => 'error'
+            );
+            return back()->with($notification2);
         }
     }
 
